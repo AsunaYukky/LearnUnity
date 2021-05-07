@@ -19,9 +19,6 @@ public class Fire1 : MonoBehaviour
 
             m_Rigitbody = spawned.GetComponent<Rigidbody>();
             m_Rigitbody.AddForce(0, 0, m_Thurst, ForceMode.Impulse);
-
         }
-
     }
-
 }

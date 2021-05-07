@@ -8,12 +8,15 @@ public class Damage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<EnemyHealthController>().enabled)
-        {
-            var enemy = other.GetComponent<EnemyHealthController>();
-            enemy.Hurt(_damage);
-            Destroy(gameObject);
-        }
+        var enemy = other.GetComponent<EnemyHealthController>();
+        if (enemy == null)
+            return;
+
+        if (!enemy.enabled)
+            return;
+        
+        enemy.Hurt(_damage);
+        Destroy(gameObject);
     }
 
 }
