@@ -10,7 +10,7 @@ public class EnemyHealthController : MonoBehaviour
     {
         Debug.Log("Hit: " +damage);
 
-        _health -= damage; ;
+        _health -= damage;
 
         if (_health <= 0)
         {
@@ -20,12 +20,6 @@ public class EnemyHealthController : MonoBehaviour
 
     private void Die()
     {
-        var anim = gameObject.GetComponent<Animation>();
-        if (anim != null) {
-
-            anim.Play("Death");
-
-        }
         Destroy(gameObject);
     }
 }

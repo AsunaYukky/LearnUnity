@@ -39,7 +39,7 @@ public class MonsterSpawn : MonoBehaviour
 
             _spawnPosition.x = gameObject.transform.position.x + x_pos;
             _spawnPosition.z = gameObject.transform.position.z + z_pos;
-            _spawnPosition.y = gameObject.transform.position.y;
+            _spawnPosition.y = 0;
 
             var spawned = Instantiate(_monsterPrefab, _spawnPosition, Quaternion.identity);
 
