@@ -361,6 +361,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  _deathTriger: deathTriger
+  _hitTriger: takeHitTriger
 --- !u!114 &8782527874577428437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef4131b2cd1d034697d54eb7e1d35f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 2
+  _followPlayerSpeed: 5
   _minDistance: 10
   _player: {fileID: 0}
   WaypointMinZOffset: -7
@@ -386,6 +389,8 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   m_CurrentWaypointIndex: 0
   MinCloseDistance: 0.1
+  _runTriger: runTriger
+  _walkTriger: walkTriger
 --- !u!195 &3014215211938216415
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Animator))]
+
 public class MonsterWaypointAndMoveController : MonoBehaviour
 {
+
  
     [SerializeField] private float _speed;
+    [SerializeField] private float _followPlayerSpeed;
     [SerializeField] private float _minDistance;
     [SerializeField] private GameObject _player;
     private float _distance;
@@ -25,13 +29,10 @@ public class MonsterWaypointAndMoveController : MonoBehaviour
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] int m_CurrentWaypointIndex;
     [SerializeField] float MinCloseDistance = 0.1f;
-    private Animator anim;
-
 
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");   //вынужденная мера, так как монстры спавнятся на карту при старте, и из незаспавненого префаба не получается получить игрока на сцене.        
-        anim = gameObject.GetComponent<Animator>();
 
         if (numOfWaypoints > 0)
             _spawnedWayPoints = SpawnWaypoint();
@@ -85,20 +86,24 @@ public class MonsterWaypointAndMoveController : MonoBehaviour
 
     void PlayerNear() {
 
+
         Vector3 relativePos = _player.transform.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos);
         transform.rotation = rotation;
 
         if (gameObject.GetComponent<NavMeshAgent>().enabled)
+            navMeshAgent.speed = _followPlayerSpeed;
             navMeshAgent.SetDestination(_player.transform.position);
 
     }
 
     void Navigation() {
 
+
         if (navMeshAgent.remainingDistance - navMeshAgent.stoppingDistance <= MinCloseDistance)
         {
             m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % _spawnedWayPoints.Length;
+            navMeshAgent.speed = _speed;
             navMeshAgent.SetDestination(_spawnedWayPoints[m_CurrentWaypointIndex].transform.position);
         }
 

@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 2729377327237165408}
   - component: {fileID: 2729377327237165409}
   - component: {fileID: 4203370317590184129}
+  - component: {fileID: 6663103719231348976}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -237,7 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _direction: {x: 0, y: 0, z: 0}
-  mouseAccelerationY: 1.5
+  _mouseAccelerationY: 1.5
   _mouse: {x: 0, y: 0, z: 0}
   _player: {fileID: 4619075267971573394}
 --- !u!114 &2729377327237165409
@@ -255,7 +256,8 @@ MonoBehaviour:
   _camera: {fileID: 4619075268229774702}
   _mine: {fileID: 9143015402183137639, guid: 40d13e84c9409d949a8e993e49d21cc7, type: 3}
   _mineSpawnPlace: {fileID: 1353230919585933925}
-  m_Thurst: 1
+  _m_Thurst: 200
+  _fireTriger: fireTriger
 --- !u!114 &4203370317590184129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +276,25 @@ MonoBehaviour:
   maxDegree: 0
   mouseInversionX: 0
   _camera: {fileID: 4619075268229774702}
+--- !u!95 &6663103719231348976
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619075267971573394}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe5d0f19d6ac6624ba1bc86a74ee243f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4619075268229774702
 GameObject:
   m_ObjectHideFlags: 0

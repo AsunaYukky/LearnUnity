@@ -2278,10 +2278,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2729377327237165408, guid: a10aea7bda7043841ad8dbd3338fa478, type: 3}
+      propertyPath: _walkTriger
+      value: speed
+      objectReference: {fileID: 0}
     - target: {fileID: 2729377327237165409, guid: a10aea7bda7043841ad8dbd3338fa478, type: 3}
       propertyPath: _camera
       value: 
       objectReference: {fileID: 405518915}
+    - target: {fileID: 2729377327237165409, guid: a10aea7bda7043841ad8dbd3338fa478, type: 3}
+      propertyPath: _m_Thurst
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729377327237165409, guid: a10aea7bda7043841ad8dbd3338fa478, type: 3}
+      propertyPath: _isFireTriger
+      value: fireTriger
+      objectReference: {fileID: 0}
     - target: {fileID: 4203370317590184129, guid: a10aea7bda7043841ad8dbd3338fa478, type: 3}
       propertyPath: maxDegree
       value: 45
