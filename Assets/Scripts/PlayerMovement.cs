@@ -1,57 +1,44 @@
-п»їusing System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-{
-    public float acceleration = 1f;
-    public float turnSpeed = 20f;
+public class PlayerMovement : MonoBehaviour {
 
-    Animator m_Animator;
-    Rigidbody m_Rigidbody;
-    AudioSource m_AudioSource;
-    Vector3 m_Movement;
-    Quaternion m_Rotation = Quaternion.identity;
+    [SerializeField] private float _speed = 5f; //скорость движения и ускорение
+    [SerializeField] private Vector3 _direction; //Направление движения
+    [SerializeField] private float _mouseAccelerationY = 1.5f; // Ускорение мыши по оси Y
+    [SerializeField] private Vector3 _mouse; //Направление движения по мышке
+    [SerializeField] private GameObject _player;
 
-    void Start ()
+    private Animator _anim;
+    [SerializeField] private string _walkTriger;
+    private int _walkTrigerId;
+
+    private void Awake()
     {
-        m_Animator = GetComponent<Animator> ();
-        m_Rigidbody = GetComponent<Rigidbody> ();
-        m_AudioSource = GetComponent<AudioSource> ();
+        _anim = gameObject.GetComponent<Animator>();
+        _walkTrigerId = Animator.StringToHash(_walkTriger);
     }
 
-    void FixedUpdate ()
+    void Update()
     {
-        float horizontal = Input.GetAxis ("Horizontal");
-        float vertical = Input.GetAxis ("Vertical");
-        
-        m_Movement.Set(horizontal, 0f, vertical);
-        m_Movement.Normalize ();
-
-        bool hasHorizontalInput = !Mathf.Approximately (horizontal, 0f);
-        bool hasVerticalInput = !Mathf.Approximately (vertical, 0f);
-        bool isWalking = hasHorizontalInput || hasVerticalInput;
-        m_Animator.SetBool ("IsWalking", isWalking);
-        
-        if (isWalking)
-        {
-            if (!m_AudioSource.isPlaying)
-            {
-                m_AudioSource.Play();
-            }
-        }
-        else
-        {
-            m_AudioSource.Stop ();
-        }
-
-        Vector3 desiredForward = Vector3.RotateTowards (transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
-        m_Rotation = Quaternion.LookRotation (desiredForward);
+        _direction.x = Input.GetAxis("Horizontal");
+        _direction.z = Input.GetAxis("Vertical");
+        _direction.y = Input.GetAxis("Jump");
+        _mouse.y = Input.GetAxis("Mouse X");
     }
 
-    void OnAnimatorMove ()
+    void FixedUpdate()
     {
-        m_Rigidbody.MovePosition (m_Rigidbody.position + m_Movement * m_Animator.deltaPosition.magnitude * acceleration);
-        m_Rigidbody.MoveRotation (m_Rotation);
+        
+        var speed = _direction * _speed * Time.deltaTime;
+        _player.transform.Translate(speed);
+        if (speed.x != 0f || speed.y != 0 || speed.z != 0f) {
+            _anim.SetFloat(_walkTrigerId, _speed);
+        }
+
+
+        var mouse = _mouse * _mouseAccelerationY * 100 * Time.deltaTime;
+        _player.transform.Rotate(mouse);
     }
 }
