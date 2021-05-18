@@ -19,9 +19,9 @@ public class CameraMovement : MonoBehaviour
             return -100f;
     }
 
-    private void Start() 
+    void Start() 
     {
-        //Cursor.visible = false; // отключаем курсор чтоб не мешал *UPD всеменно выключил
+        Cursor.visible = false; // отключаем курсор чтоб не мешал *UPD всеменно выключил
     }
 
     void Update()
