@@ -13,7 +13,7 @@ public class Manager : MonoBehaviour
         {
             _pauseMenu.SetActive(true);
             Cursor.visible = true;
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
             _gamePaused = true;
                 
 
@@ -21,7 +21,7 @@ public class Manager : MonoBehaviour
         {
             _pauseMenu.SetActive(false);
             Cursor.visible = false;
-            //Time.timeScale = 1;
+            Time.timeScale = 1;
             _gamePaused  = false;
         }
 
@@ -33,6 +33,7 @@ public class Manager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && _gamePaused == false)
         {
             PauseGame(true);
+            return;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && _gamePaused == true)

@@ -241,6 +241,7 @@ MonoBehaviour:
   _mouseAccelerationY: 1.5
   _mouse: {x: 0, y: 0, z: 0}
   _player: {fileID: 4619075267971573394}
+  _walkTriger: 
 --- !u!114 &2729377327237165409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f953fddb6015a594489bd58f2c3ec47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 4619075268229774702}
+  _camera: {fileID: 4619075268229774704}
   _mine: {fileID: 9143015402183137639, guid: 40d13e84c9409d949a8e993e49d21cc7, type: 3}
   _mineSpawnPlace: {fileID: 1353230919585933925}
   _m_Thurst: 200

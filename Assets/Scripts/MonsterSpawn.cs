@@ -10,7 +10,7 @@ public class MonsterSpawn : MonoBehaviour
     //****************** TO DO: респаун монстров с задержкой ***********************
     //[SerializeField] private int monsterSpawnTime = 60; //время между респауном 
     //***************** END TO DO **************************************************
-    
+
     [SerializeField] private float minZOffset = -10f; //минимальное смещение по оси Z от точки спавна
     [SerializeField] private float maxZOffset = 10f; //максимальное смещение по оси Z от точки спавна
 
@@ -22,6 +22,7 @@ public class MonsterSpawn : MonoBehaviour
     void Start()
     {
         SpawnMonster();
+
     }
 
     // TODO - Спавнер после реализации механизма респауна по таймауту нужно будет перенести сюда.
